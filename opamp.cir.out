@@ -1,0 +1,27 @@
+* c:\users\hp\esim-workspace\opamp\opamp.cir
+
+.include lm_741.sub
+.include Germanium_Diode.lib
+x1 ? net-_r1-pad2_ net-_c1-pad1_ net-_x1-pad4_ ? output net-_x1-pad7_ ? lm_741
+rf1  net-_r1-pad2_ output 0k
+rl1  gnd output 5k
+v2  net-_x1-pad7_ gnd 15
+v3  net-_x1-pad4_ gnd -15
+* u2  output plot_v1
+* u1  input plot_v1
+v1  input gnd sine(0 4 50 0 0)
+c1  net-_c1-pad1_ gnd 0.01u
+d1 input output Germanium_Diode
+l1  gnd net-_c1-pad1_ 10m
+r1  input net-_r1-pad2_ 1k
+.tran 100e-06 100e-03 0e-03
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(output)
+plot v(input)
+.endc
+.end

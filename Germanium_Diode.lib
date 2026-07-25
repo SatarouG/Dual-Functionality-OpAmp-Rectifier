@@ -1,0 +1,1 @@
+.MODEL Germanium_Diode D( Is=2.0e-7 Rs=7 N=1.3 tt=144e-9 Cjo=0.5e-12 M=0.27 Vj=0.1 Bv=75 Ibv=0.018 )
